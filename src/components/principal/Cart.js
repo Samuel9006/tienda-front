@@ -6,7 +6,7 @@ function Cart({ cart, removeFromCart, isVisible }) {
 
   const handleCheckout = () => {
     alert(`Total a pagar: $${totalAmount}`);
-    
+    isVisible = false;
   };
 
 

@@ -1,3 +1,13 @@
+
+.btn-register{
+    margin-top: 1em;
+    background-color: white !important;
+    color: #007bff !important;
+    font-size: 9px !important;
+    border: none !important;
+    height: auto !important;
+}
+
 .body-login{
     font-family: Arial, sans-serif;
     background-image: url('../../../public/productos/background.jpeg');
