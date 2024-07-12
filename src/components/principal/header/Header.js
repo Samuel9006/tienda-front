@@ -1,10 +1,20 @@
 import React, {useState} from 'react';
 import Sidebar from "../sidebar/Sidebar";
+import Cart from "../cart/Cart";
 
-function Header({ cart, toggleCartVisibility }) {
+function Header({ cart, updateCart }) {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
     const productCount = cart.reduce((total, product) => total + product.quantity, 0);
+    const [isCartVisible, setIsCartVisible] = useState(false);
 
+    const removeFromCart = (productTitle) => {
+        const updatedCart = cart.filter(item => item.nombre !== productTitle);
+        updateCart(updatedCart);
+    };
+
+    const toggleCartVisibility = () => {
+        setIsCartVisible(!isCartVisible);
+    };
 
     const toggleSidebarVisibility = () => {
         setIsSidebarVisible(!isSidebarVisible);
@@ -26,6 +36,7 @@ function Header({ cart, toggleCartVisibility }) {
                     </div>
                 </div>
             </header>
+            <Cart cart={cart} removeFromCart={removeFromCart} isVisible={isCartVisible}/>
         </div>
 
     );

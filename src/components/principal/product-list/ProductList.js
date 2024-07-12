@@ -4,10 +4,21 @@ import {getAvalaibleProducts} from "../../services/producto.service";
 import {useOutletContext} from "react-router-dom";
 
 function ProductList() {
-    const { addToCart } = useOutletContext();
+    const { cart, updateCart } = useOutletContext();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const addToCart = (product) => {
+        const existingProductIndex = cart.findIndex(item => item.nombre === product.nombre);
+        const updatedCart = [...cart];
+        if (existingProductIndex > -1) {
+            updatedCart[existingProductIndex].quantity++;
+        } else {
+            updatedCart.push({ ...product, quantity: 1 });
+        }
+        updateCart(updatedCart);
+    };
 
     useEffect(() => {
         const fetchProducts = async () => {
