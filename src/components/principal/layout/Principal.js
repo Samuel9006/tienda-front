@@ -1,8 +1,8 @@
-import Sidebar from "./Sidebar";
-import Header from "./Header";
-import ProductList from "./ProductList";
-import Cart from "./Cart";
+import Sidebar from "../sidebar/Sidebar";
+import Header from "../header/Header";
+import Cart from "../cart/Cart";
 import React, { useState } from 'react';
+import {Outlet} from "react-router-dom";
 
 
 
@@ -33,15 +33,17 @@ function Principal() {
     return (
       <div className="top-section">
         <Sidebar />
-        <div className="main-content" id="main-content">
-          <div className="background-top">
-            <Header cart={cart} toggleCartVisibility={toggleCartVisibility}/>
+          <div className="main-content" id="main-content">
+              <div className="background-top">
+                  <Header cart={cart} toggleCartVisibility={toggleCartVisibility}/>
+              </div>
+              <div className="bottom-section">
+                  <main>
+                      <Outlet context={{ addToCart }}/>
+                  </main>
+              </div>
+              <Cart cart={cart} removeFromCart={removeFromCart} isVisible={isCartVisible}/>
           </div>
-          <div className="bottom-section">
-            <ProductList addToCart={addToCart} />
-          </div>
-          <Cart cart={cart} removeFromCart={removeFromCart} isVisible={isCartVisible}/>
-        </div>
       </div>
     );
 }

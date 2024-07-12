@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import ProductItem from './ProductItem';
-import {getAvalaibleProducts} from "../services/producto.service";
+import {getAvalaibleProducts} from "../../services/producto.service";
+import {useOutletContext} from "react-router-dom";
 
-function ProductList({ addToCart }) {
-
+function ProductList() {
+    const { addToCart } = useOutletContext();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

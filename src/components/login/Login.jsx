@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Login({ onLogin, type }) {
+function Login({ setIsAuthenticated, type }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ function Login({ onLogin, type }) {
                 localStorage.setItem('user', response.data.username);
                 localStorage.setItem('role', response.data.role);
                 localStorage.setItem('pass', password);
-                onLogin(response);
+                setIsAuthenticated = true;
                 navigate('/products');
             }else{
                 const response = await axios.post('http://localhost:8080/auth/register',
