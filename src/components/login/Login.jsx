@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/login', { username, password });
-            const token = response.data.token;
-            localStorage.setItem('token', token);
-            onLogin(token);
+            const response = await axios.post('http://localhost:8080/auth/login', { username, password });
+            localStorage.setItem('user', response.data.username);
+            localStorage.setItem('role', response.data.role);
+            localStorage.setItem('pass', password);
+            onLogin(response);
+            navigate('/products');
         } catch (error) {
-            setError('Invalid credentials. Please try again.');
+            setError('Credenciales invalidas. Por favor vuelve a intentar');
         }
     };
 
     return (
-        <div className="login-container">
+        <div className="body-login">
+            <div className="login-container">
             <h2>Inicio de sesión</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleLogin}>
@@ -46,6 +51,7 @@ function Login({ onLogin }) {
                 </div>
                 <button type="submit">Ingresar</button>
             </form>
+        </div>
         </div>
     );
 }

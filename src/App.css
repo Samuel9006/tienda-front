@@ -10,7 +10,7 @@
 body{
   margin: 0 auto;
   max-width: 12000px;
-  font-family: 'Lato';
+  font-family: Arial, sans-serif;
   color: #333;
 }
 
@@ -24,7 +24,7 @@ body{
 }
 
 .total-pagar {
-  background-color: #4CAF50; /* Verde */
+  background-color: #2060E8; /* Verde */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -39,14 +39,14 @@ body{
 .total-pagar:hover {
   background-color: white;
   color: black;
-  border: 2px solid #4CAF50;
+  border: 2px solid #2060E8;
 }
 
 .h1{
   color: #fff;
 }
 .top-section{
-  background-image: url('../public/productos/background.jpeg');
+  background-color: #2060E8;
   background-size: cover;
   background-position: center;
   height: 100px; /* Ajusta la altura según tus necesidades */
@@ -200,7 +200,7 @@ header{
   align-items: center;
   justify-content: space-between;
   padding: 30px;
-
+  font-size: 18px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.20);
 
 }
@@ -210,22 +210,23 @@ header{
   justify-content: space-between;
   align-items: center;
   flex: 0.8;
+  margin-bottom: 0.5em;
 }
 
 .titulo-producto-carrito{
-  font-size: 25px;
+
   margin-left: 20px;
 }
 
 .precio-producto-carrito{
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 5px;
 }
 
 .cantidad-producto-carrito{
   font-weight: 400;
-  font-size: 35px;
+  font-size: 20px;
 }
 
 .icon-close{

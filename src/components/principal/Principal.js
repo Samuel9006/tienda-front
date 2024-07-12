@@ -11,7 +11,7 @@ function Principal() {
     const [isCartVisible, setIsCartVisible] = useState(false);
 
     const addToCart = (product) => {
-      const existingProductIndex = cart.findIndex(item => item.title === product.title);
+      const existingProductIndex = cart.findIndex(item => item.nombre === product.nombre);
       const updatedCart = [...cart];
       if (existingProductIndex > -1) {
         updatedCart[existingProductIndex].quantity++;
@@ -22,7 +22,7 @@ function Principal() {
     };
   
     const removeFromCart = (productTitle) => {
-      const updatedCart = cart.filter(item => item.title !== productTitle);
+      const updatedCart = cart.filter(item => item.nombre !== productTitle);
       setCart(updatedCart);
     };
 
