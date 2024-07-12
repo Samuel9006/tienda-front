@@ -29,10 +29,9 @@ function Principal() {
     const toggleCartVisibility = () => {
         setIsCartVisible(!isCartVisible);
       };
-  
+
     return (
       <div className="top-section">
-        <Sidebar />
           <div className="main-content" id="main-content">
               <div className="background-top">
                   <Header cart={cart} toggleCartVisibility={toggleCartVisibility}/>

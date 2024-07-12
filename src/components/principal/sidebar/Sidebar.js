@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Sidebar() {
+function Sidebar({isVisible}) {
     return (
-        <div className="sidebar" id="sidebar">
+        <div className={`sidebar ${isVisible ? 'open' : 'hidden'}`} id="sidebar">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Pedidos</a></li>
