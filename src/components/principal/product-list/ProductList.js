@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import ProductItem from './ProductItem';
-import {getAvalaibleProducts} from "../../services/producto.service";
+import {getAllProducts, getAvalaibleProducts} from "../../services/producto.service";
 import {useOutletContext} from "react-router-dom";
 
 function ProductList() {
+    const userRole = localStorage.getItem('role');
     const { cart, updateCart } = useOutletContext();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,7 +24,13 @@ function ProductList() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const data = await getAvalaibleProducts();
+                let data
+                if(userRole === 'ADMIN'){
+                    data = await getAllProducts()
+                }else{
+                    data = await getAvalaibleProducts();
+                }
+
                 setProducts(data);
                 setLoading(false);
             } catch (error) {
