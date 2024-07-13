@@ -1,14 +1,35 @@
 import React, { useState } from 'react';
+import {saveVenta} from "../../services/venta.service";
 
-function Cart({ cart, removeFromCart, isVisible }) {
 
+function Cart({ cart, removeFromCart, isVisible, toggleCartVisibility, updateCart }) {
+  const [error, setError] = useState(null);
   const totalAmount = cart.reduce((total, product) => total + product.valor * product.quantity, 0);
 
-  const handleCheckout = () => {
-    alert(`Total a pagar: $${totalAmount}`);
-    isVisible = false;
+  const handleCheckout = async () => {
+      toggleCartVisibility(!isVisible);
+      alert(`Total a pagar: $${totalAmount}`);
+      try {
+          var ventaRequest = {
+              productos: cart,
+              total: totalAmount,
+          };
+          const response = await saveVenta(ventaRequest);
+          if (response){
+              cleanCart();
+              alert("Venta exitosa");
+          }
+      } catch (err) {
+          setError('Failed to save sale.');
+          alert("Venta exitosa");
+      }
+
   };
 
+
+  const cleanCart = () =>{
+        updateCart([])
+  }
 
   return (
     <div className={`container-cart-products ${isVisible ? '' : 'hidden-cart'}`}>

@@ -5,7 +5,7 @@ function ProductItem({ product, addToCart }) {
     return (
         <div className="item">
           <figure>
-            <img src={product.imagenPath} alt="producto" />
+            <img src={`productos/${product.imagenPath}`} alt="producto" />
           </figure>
           <div className="info-product">
             <h2>{product.descripcion}</h2>

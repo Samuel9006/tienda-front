@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import Login from "./components/login/Login";
 import ProductForm from "./components/producto/ProductForm";
 import ProductList from "./components/principal/product-list/ProductList";
+import Venta from "./components/venta/Venta";
 
 
 function App() {
@@ -27,9 +28,10 @@ function App() {
 
           <Route path="/" element={<Principal />}>
             <Route path="/products" element={isAuthenticated ? <ProductList /> : <Navigate to="/login" />} />
-            <Route path="/products/create" element={<ProductForm/> }/>
+            <Route path="/products/create" element={isAuthenticated ? <ProductForm/> : <Navigate to="/login" />}/>
             <Route path="/products/edit/:productId" element={isAuthenticated ? <ProductForm/> : <Navigate to="/login"/>}/>
-            <Route path="*" element={<Navigate to="/products" />} />
+            <Route path="/sales" element={isAuthenticated ? <Venta/> : <Navigate to="/login"/>}/>
+            <Route path="*" element={isAuthenticated ? <Navigate to="/products" /> : <Navigate to="/login"/>} />
           </Route>
         </Routes>
       </Router>

@@ -1,22 +1,19 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
-function Sidebar({isVisible}) {
+function Sidebar({isVisible, toggleSidebarVisibility}) {
+
+    const handleCerrarSesion = (event) => {
+        localStorage.clear();
+    };
+
     return (
         <div className={`sidebar ${isVisible ? 'open' : 'hidden'}`} id="sidebar">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pedidos</a></li>
-                <li><a href="#">Cuentas</a></li>
-                <li><a href="#">Transacciones</a></li>
-                <li><a href="#">Detalles de la cuenta</a></li>
-                <li className="dropdown">
-                    <a href="#" className="dropbtn">Soporte</a>
-                    <div className="dropdown-content">
-                        <a href="#">FAQ</a>
-                        <a href="#">Contactar</a>
-                    </div>
-                </li>
-                <li><a href="#">Cerrar sesión</a></li>
+                <li><Link to="/products">Inicio</Link></li>
+                <li><Link to="/products/create">Producto</Link></li>
+                <li><Link to="/sales">Ventas</Link></li>
+                <li><Link to="/login" onClick={handleCerrarSesion}>Cerrar sesión</Link></li>
             </ul>
         </div>
     );

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
 import './ProductForm.css';
 import {getProductById, saveProduct, UpdateProduct} from "../services/producto.service";
 import {useParams} from "react-router-dom";
-import Sidebar from "../principal/sidebar/Sidebar";
 
 const ProductForm = () => {
     const { productId } = useParams();

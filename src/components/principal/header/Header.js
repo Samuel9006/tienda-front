@@ -21,7 +21,7 @@ function Header({ cart, updateCart }) {
     };
     return (
         <div>
-            <Sidebar isVisible={isSidebarVisible}/>
+            <Sidebar isVisible={isSidebarVisible} toggleSidebarVisibility={toggleSidebarVisibility} />
             <header>
                 <button className="menu-btn" id="menu-btn" onClick={toggleSidebarVisibility}>&#9776;</button>
                 <h1 className='titulo-tienda'>Tienda</h1>
@@ -36,7 +36,7 @@ function Header({ cart, updateCart }) {
                     </div>
                 </div>
             </header>
-            <Cart cart={cart} removeFromCart={removeFromCart} isVisible={isCartVisible}/>
+            <Cart cart={cart} removeFromCart={removeFromCart} isVisible={isCartVisible} toggleCartVisibility={toggleCartVisibility} updateCart={updateCart}/>
         </div>
 
     );
